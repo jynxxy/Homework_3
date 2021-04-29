@@ -22,6 +22,16 @@ public class Main {
         switch (select) {
             case "1":
                 System.out.println("Print sum of all employees salary");
+
+
+
+                double sum = 0;
+
+                for (Employee employee : employeesList) {
+                    sum += employee.getSalary();
+                }
+                System.out.println("Salary: " + sum);
+
                 break;
             case "2":
                 System.out.println("Display all user employees data");
@@ -53,34 +63,34 @@ public class Main {
             System.out.println("Please enter the lastname of the " + (i + 1) + " employee");
             String lastname = scanner.next();
             System.out.println("Please enter the salary of the " + (i + 1) + " employee");
-            int salary = scanner.nextInt();
 
-
+            boolean isValid = true;
+            int intSalary = 0;
             do {
-                if (salary <= 0) {
-                    System.out.println("You enter wrong salary,  please enter integer value > 0");
-                } else if (!scanner.hasNextInt()) {
-                    scanner.next();
-                    System.out.println("You entered string, please enter integer value > 0");
-                } else {
-                    salary = scanner.nextInt();
+                String salary = scanner.next();
+                isValid = true;
+
+                try {
+                    intSalary = Integer.parseInt(salary);
+                } catch (NumberFormatException e) {
+                    System.out.println("You entered string, please enter integer value");
+//                    isValid = false;
+                    continue;
                 }
-            } while (salary != 0);
 
+                if (intSalary <= 0) {
+                    System.out.println("You enter wrong salary,  please enter integer value > 0");
+//                    isValid = false;
+                    continue;
+                }
+            } while (!isValid);
 
-
-
-
-//            System.out.println("You eneter wrong salary,  please enter integer value > 0");
-
-            Employee employee = new Employee(firstname, lastname, salary);
+            Employee employee = new Employee(firstname, lastname, intSalary);
             employeesList.add(employee);
-
         }
 
         return employeesList;
     }
-
 
 }
 
