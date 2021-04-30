@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Employee {
 
     private String firstname;
@@ -37,18 +34,4 @@ public class Employee {
         this.salary = salary;
     }
 
-    public void totalEarnings() {
-
-    }
-
-
-
-
-
-
-
-    public static void getAllData() {
-        // zwróci tekst w formacie „Salary for IMIE NAZWISKO is WYPLATA”
-
-    }
 }

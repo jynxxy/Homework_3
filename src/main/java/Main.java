@@ -16,30 +16,21 @@ public class Main {
 
         switch (select) {
             case "1":
-                System.out.println("Print sum of all employees salary");
-
                 double sum = 0;
 
                 for (Employee employee : employeesList) {
                     sum += employee.getSalary();
                 }
                 System.out.println("Salary: " + sum);
-
                 break;
             case "2":
-                System.out.println("Display all user employees data");
-                for (Employee employee : employeesList) {
-                    System.out.println("Name: " + employee.getFirstname() + "Surname: " + employee.getLastname()
-                            + "Salary: " + employee.getSalary() );
-                }
+                getAllData();
                 break;
             case "3":
                 System.out.println("Add new employee");
-                createEmployeeList();
 
                 break;
             case "4":
-
                 break;
         }
     }
@@ -50,9 +41,9 @@ public class Main {
 
         for (int i = 0; i < 5; i++) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Please enter the firstname of the " + (i + 1) + " employee: ");
+            System.out.println("Please enter the first name of the " + (i + 1) + " employee: ");
             String firstname = scanner.next();
-            System.out.println("Please enter the lastname of the " + (i + 1) + " employee");
+            System.out.println("Please enter the last name of the " + (i + 1) + " employee");
             String lastname = scanner.next();
             System.out.println("Please enter the salary of the " + (i + 1) + " employee");
 
@@ -60,20 +51,18 @@ public class Main {
             int intSalary = 0;
             while (!isValid){
                 String salary = scanner.next();
-                isValid = true;
 
                 try {
                     intSalary = Integer.parseInt(salary);
                 } catch (NumberFormatException e) {
                     System.out.println("You entered string, please enter integer value");
-                    isValid = false;
                     continue;
                 }
-
                 if (intSalary <= 0) {
                     System.out.println("You enter wrong salary,  please enter integer value > 0");
-                    isValid = false;
+                    continue;
                 }
+                isValid = true;
             }
 
             Employee employee = new Employee(firstname, lastname, intSalary);
@@ -81,6 +70,13 @@ public class Main {
         }
 
         return employeesList;
+    }
+
+    public static void getAllData() {
+        for (Employee employee : employeesList) {
+            System.out.println("Salary for " + employee.getFirstname() + " " + employee.getLastname()
+                    + " is " + employee.getSalary() );
+        }
     }
 
 }
