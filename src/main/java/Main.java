@@ -9,21 +9,15 @@ public class Main {
         System.out.println("Hello" + "\n" + "Please enter first name, last name and salary of five employees");
         createEmployeeList();
 
-        System.out.println("Choose option:");
-        System.out.println("1 – Print sum of all employees salary");
-        System.out.println("2 – Display all user employees data");
-        System.out.println("3 – Add new employee");
-        System.out.println("4 – End program");
+        System.out.println("Choose option:" + "\n" + "1 – Print sum of all employees salary" + "\n" +
+                "2 – Display all user employees data" + "\n" + "3 – Add new employee" + "\n" + "4 – End program" );
 
         Scanner scanner = new Scanner(System.in);
         String select = scanner.nextLine();
 
-
         switch (select) {
             case "1":
                 System.out.println("Print sum of all employees salary");
-
-
 
                 double sum = 0;
 
@@ -43,7 +37,6 @@ public class Main {
             case "3":
                 System.out.println("Add new employee");
                 createEmployeeList();
-
 
                 break;
             case "4":
