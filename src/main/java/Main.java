@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -57,9 +56,9 @@ public class Main {
             String lastname = scanner.next();
             System.out.println("Please enter the salary of the " + (i + 1) + " employee");
 
-            boolean isValid = true;
+            boolean isValid = false;
             int intSalary = 0;
-            do {
+            while (!isValid){
                 String salary = scanner.next();
                 isValid = true;
 
@@ -67,16 +66,15 @@ public class Main {
                     intSalary = Integer.parseInt(salary);
                 } catch (NumberFormatException e) {
                     System.out.println("You entered string, please enter integer value");
-//                    isValid = false;
+                    isValid = false;
                     continue;
                 }
 
                 if (intSalary <= 0) {
                     System.out.println("You enter wrong salary,  please enter integer value > 0");
-//                    isValid = false;
-                    continue;
+                    isValid = false;
                 }
-            } while (!isValid);
+            }
 
             Employee employee = new Employee(firstname, lastname, intSalary);
             employeesList.add(employee);
